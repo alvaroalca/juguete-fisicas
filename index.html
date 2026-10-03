@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Juguete de físicas</title>
+<meta name="description" content="Cuerpos blandos en el navegador: estira, golpea y dispara a gelatina, plastilina, una diana de 10 m y un rey de ajedrez. Física XPBD escrita a mano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="marca"><b>Juguete de físicas</b></div>
+<dl id="lecturas">
+  <div><dt>Masa</dt><dd id="l-masa"></dd></div>
+  <div><dt>Volumen</dt><dd id="l-vol"></dd></div>
+  <div><dt>E. cinética</dt><dd id="l-ec"></dd></div>
+</dl>
+<div id="impacto" hidden><span class="valor">-</span><span class="etq">último impacto</span></div>
+<p id="pista"></p>
+
+<aside id="panel">
+  <button id="plegar" aria-label="Plegar panel">▾</button>
+  <section>
+    <h2>Objeto</h2>
+    <div class="fila" id="objetos">
+      <button data-obj="gelatina">Gelatina</button>
+      <button data-obj="diana">Diana</button>
+      <button data-obj="letras">Letras</button>
+      <button data-obj="rey">Rey</button>
+    </div>
+    <form id="form-texto" hidden>
+      <input id="texto" maxlength="8" value="BOING" autocomplete="off" spellcheck="false" aria-label="Texto">
+      <button>Crear</button>
+    </form>
+  </section>
+  <section>
+    <h2>Herramienta</h2>
+    <div class="fila">
+      <button data-tool="agarrar" class="activo">Agarrar</button>
+      <button data-tool="disparar">Disparar</button>
+      <button data-tool="golpear">Maza</button>
+    </div>
+  </section>
+  <section>
+    <h2>Material</h2>
+    <div class="fila" id="materiales"></div>
+  </section>
+  <section>
+    <label class="deslizador">Firmeza <input type="range" id="firmeza" min="0" max="1" step="0.01" value="0.5"><output></output></label>
+    <label class="deslizador">Amortiguación <input type="range" id="amortiguacion" min="0" max="1" step="0.005" value="0.075"><output></output></label>
+    <label class="deslizador">Velocidad <input type="range" id="velocidad" min="0.05" max="1" step="0.05" value="1"><output></output></label>
+  </section>
+  <section class="fila">
+    <button id="malla" aria-pressed="false">Ver malla</button>
+    <button id="empujon">Empujón</button>
+    <button id="reiniciar">Reiniciar</button>
+  </section>
+</aside>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

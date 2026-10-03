@@ -1,0 +1,59 @@
+/* Paleta: Teenage Engineering OP-1 (cuerpo de aluminio, teclas negras, encoders azul/verde/naranja). */
+:root {
+  --aluminio: #cfd1cd;
+  --cuerpo: #eeeeec;
+  --borde: #b4b7b3;
+  --tinta: #1c1c1c;
+  --tinta-suave: #5d605c;
+  --tecla: #2a2a2a;
+  --tecla-txt: #f1f1ef;
+  --azul: #2b63d9;
+  --verde: #2f9e5b;
+  --naranja: #f0552a;
+}
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--aluminio); color: var(--tinta);
+  font-family: "IBM Plex Mono", ui-monospace, monospace; }
+#c { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+#marca { position: fixed; top: 16px; left: 16px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+#marca b { font-weight: 500; }
+
+#lecturas { position: fixed; top: 16px; right: 16px; margin: 0; display: grid; gap: 4px; font-size: 12px; text-align: right; }
+#lecturas div { display: flex; gap: 10px; justify-content: flex-end; }
+#lecturas dt { color: var(--tinta-suave); }
+#lecturas dd { margin: 0; min-width: 76px; font-variant-numeric: tabular-nums; }
+
+#impacto { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; }
+#impacto .valor { display: block; font-size: 44px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; }
+#impacto .etq { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); }
+
+#pista { position: fixed; right: 16px; bottom: 16px; max-width: 260px; font-size: 11px; color: var(--tinta-suave); text-align: right; }
+
+#panel { position: fixed; left: 16px; bottom: 16px; width: 286px; box-sizing: border-box; padding: 12px 14px 4px;
+  background: var(--cuerpo); border: 1px solid var(--borde); border-radius: 10px; box-shadow: 0 2px 0 var(--borde); font-size: 12px; }
+#panel section { margin-bottom: 12px; }
+#panel h2 { margin: 0 0 6px; font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); }
+.fila { display: flex; flex-wrap: wrap; gap: 6px; }
+button { font: inherit; background: var(--tecla); color: var(--tecla-txt); border: 0; border-radius: 6px; padding: 7px 10px; cursor: pointer; }
+button:disabled { opacity: .35; cursor: default; }
+button.activo { background: var(--azul); }
+button[data-tool="disparar"].activo { background: var(--naranja); }
+button[aria-pressed="true"] { background: var(--verde); }
+#form-texto { display: flex; gap: 6px; margin-top: 8px; }
+#form-texto[hidden] { display: none; }
+#texto { flex: 1; min-width: 0; font: inherit; text-transform: uppercase; padding: 6px 8px; border: 1px solid var(--borde); border-radius: 6px; background: #fff; color: var(--tinta); }
+.deslizador { display: grid; grid-template-columns: 96px 1fr 44px; align-items: center; gap: 8px; margin-bottom: 4px; }
+.deslizador output { text-align: right; font-variant-numeric: tabular-nums; color: var(--tinta-suave); }
+input[type="range"] { width: 100%; accent-color: var(--azul); }
+#plegar { display: none; }
+
+@media (max-width: 700px) {
+  #panel { left: 0; right: 0; bottom: 0; width: auto; border-radius: 12px 12px 0 0; max-height: 46vh; overflow-y: auto;
+    padding: 10px 16px calc(4px + env(safe-area-inset-bottom)); }
+  #plegar { display: block; position: absolute; top: 8px; right: 12px; padding: 4px 10px; }
+  #panel.plegado section:not(:first-of-type) { display: none; }
+  #pista { display: none; }
+  #lecturas { font-size: 10px; }
+  #lecturas dd { min-width: 60px; }
+  #impacto { top: 44px; }
+}
