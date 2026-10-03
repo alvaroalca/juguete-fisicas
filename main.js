@@ -1202,7 +1202,7 @@ const lectura = {
 
 renderer.setAnimationLoop(() => {
   const fdt = Math.min(reloj.getDelta(), 1 / 30);
-  if (body) {
+  if (body && fdt > 0) {   // el primer getDelta da 0 y (pos - prev) / dt sería NaN: la gelatina no se construye esperando, así que ya existe en ese frame
     const t = fdt * estado.velocidad, P = parametros();
     const enCuerpo = balas.filter(b => !b.porRayo);
     const sub = Math.min(40, enCuerpo.reduce((n, b) => Math.max(n, Math.ceil(Math.hypot(...b.v) * t / (0.25 * b.r))), SUBPASOS));  // más subpasos con un balín en vuelo, si no atraviesa
