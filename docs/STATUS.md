@@ -15,4 +15,4 @@ Actualizado: 2026-10-03
 - [ ] Probar la mezcla de plastilina en navegador.
 - [ ] Probar en móvil.
 - [ ] Extras si apetece: corazón que late, nudo de trébol, modo calor, globo que revienta.
-- [ ] Repo en GitHub, ubicarlo en el perfil y ficha en el portfolio.
+- [x] Repo en GitHub, ubicarlo en el perfil y ficha en el portfolio (`/projects/juguete-fisicas/`, con reel de 24 s hecho en `promo-videos\juguete-fisicas`).
